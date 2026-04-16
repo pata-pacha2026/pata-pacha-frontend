@@ -1,0 +1,380 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* === 圆角 — rounder for cute style === */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* === 核心颜色 === */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* === 功能颜色 === */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  /* === 主题特色颜色 — Dopamine palette === */
+  --color-theme-red: var(--theme-red);
+  --color-theme-green: var(--theme-green);
+  --color-theme-gold: var(--theme-gold);
+  --color-theme-blue: var(--theme-blue);
+  --color-theme-pink: var(--theme-pink);
+  --color-theme-purple: var(--theme-purple);
+  --color-theme-mint: var(--theme-mint);
+  --color-theme-peach: var(--theme-peach);
+
+  /* === 图表颜色 === */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* === Hero 区域颜色 === */
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+
+  /* === 阴影 === */
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-lg: var(--ds-shadow-lg);
+  --shadow-xl: var(--ds-shadow-xl);
+
+  /* === 字号 === */
+  --text-xs: var(--font-size-small);
+  --text-sm: var(--font-size-label);
+  --text-base: var(--font-size-body);
+
+  /* === 自定义字体 === */
+  --font-display: "Fredoka", sans-serif;
+  --font-body: "Quicksand", sans-serif;
+}
+
+:root {
+  /* === 圆角基准值 — rounder for cute === */
+  --radius: 0.875rem;
+
+  /* === 字体排版 — Cute rounded fonts === */
+  --font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-size-display: 3.5rem;
+  --font-size-headline: 2rem;
+  --font-size-title: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-label: 0.875rem;
+  --font-size-small: 0.75rem;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --line-height: 1.5;
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+
+  /* === 间距系统 === */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* === 阴影 — softer, cuter === */
+  --ds-shadow-sm: 0 2px 8px oklch(0.7 0.15 330 / 0.08);
+  --ds-shadow-md: 0 4px 16px oklch(0.7 0.15 330 / 0.10), 0 2px 6px oklch(0.7 0.15 330 / 0.06);
+  --ds-shadow-lg: 0 8px 30px oklch(0.7 0.15 330 / 0.12), 0 4px 10px oklch(0.7 0.15 330 / 0.08);
+  --ds-shadow-xl: 0 16px 48px oklch(0.7 0.15 330 / 0.16), 0 8px 20px oklch(0.7 0.15 330 / 0.10);
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-lg: var(--ds-shadow-lg);
+  --shadow-xl: var(--ds-shadow-xl);
+
+  /* === 动效时间 === */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ============================================
+     PATA PACHA — Dopamine Cute Color System
+     Inspired by ZEZE: pastels, vibrant accents, playful
+     ============================================ */
+
+  /* Background: warm cream with pink tint */
+  --background: oklch(0.985 0.01 350);
+  --foreground: oklch(0.22 0.04 340);
+
+  /* Card: pure white with warmth */
+  --card: oklch(0.995 0.003 350);
+  --card-foreground: oklch(0.22 0.04 340);
+
+  /* Popover */
+  --popover: oklch(0.995 0.003 350);
+  --popover-foreground: oklch(0.22 0.04 340);
+
+  /* Primary: vibrant coral-pink */
+  --primary: oklch(0.65 0.24 350);
+  --primary-foreground: oklch(0.99 0.005 350);
+
+  /* Secondary: soft lavender */
+  --secondary: oklch(0.94 0.04 300);
+  --secondary-foreground: oklch(0.30 0.08 300);
+
+  /* Muted: blush pink */
+  --muted: oklch(0.95 0.02 350);
+  --muted-foreground: oklch(0.55 0.06 340);
+
+  /* Accent: sunshine yellow */
+  --accent: oklch(0.82 0.18 90);
+  --accent-foreground: oklch(0.25 0.08 80);
+
+  /* Destructive: soft red */
+  --destructive: oklch(0.60 0.22 20);
+
+  /* Border & Input */
+  --border: oklch(0.92 0.03 350);
+  --input: oklch(0.92 0.03 350);
+  --ring: oklch(0.65 0.24 350);
+
+  /* Success: mint green */
+  --success: oklch(0.68 0.16 155);
+  --success-foreground: oklch(0.99 0.005 155);
+  /* Warning: warm orange */
+  --warning: oklch(0.78 0.17 60);
+  --warning-foreground: oklch(0.25 0.08 60);
+  /* Info: sky blue */
+  --info: oklch(0.65 0.18 240);
+  --info-foreground: oklch(0.99 0.005 240);
+
+  /* Theme dopamine colors */
+  --theme-red: oklch(0.65 0.24 10);
+  --theme-green: oklch(0.68 0.16 155);
+  --theme-gold: oklch(0.82 0.18 90);
+  --theme-blue: oklch(0.65 0.18 240);
+  --theme-pink: oklch(0.75 0.18 350);
+  --theme-purple: oklch(0.62 0.22 300);
+  --theme-mint: oklch(0.82 0.10 165);
+  --theme-peach: oklch(0.85 0.12 50);
+
+  /* Charts — dopamine palette */
+  --chart-1: oklch(0.75 0.18 350);
+  --chart-2: oklch(0.68 0.16 155);
+  --chart-3: oklch(0.82 0.18 90);
+  --chart-4: oklch(0.65 0.18 240);
+  --chart-5: oklch(0.62 0.22 300);
+
+  /* Hero — gradient pink to purple */
+  --hero: oklch(0.65 0.20 330);
+  --hero-foreground: oklch(0.99 0.005 350);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Tailwind v4: container no longer auto-centers. Restore v3 behavior. */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 640px) { max-width: 640px; }
+  @media (width >= 768px) { max-width: 768px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1280px; }
+  @media (width >= 1536px) { max-width: 1536px; }
+}
+
+/* ================================================================
+   Page Transition System
+   ================================================================ */
+.page-transition {
+  transition:
+    opacity var(--duration-normal, 200ms) var(--ease-default, ease),
+    transform var(--duration-normal, 200ms) var(--ease-default, ease),
+    filter var(--duration-normal, 200ms) var(--ease-default, ease);
+}
+
+.page-transition.fade-out { opacity: 0; }
+.page-transition.fade-in  { opacity: 1; }
+
+.page-transition[data-transition="slide-up"].fade-out {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.page-transition[data-transition="slide-up"].fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition[data-transition="slide-fade"].fade-out {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+.page-transition[data-transition="slide-fade"].fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition[data-transition="blur-fade"].fade-out {
+  opacity: 0;
+  filter: blur(12px);
+}
+.page-transition[data-transition="blur-fade"].fade-in {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.page-transition[data-transition="scale"].fade-out {
+  opacity: 0;
+  transform: scale(0.96);
+}
+.page-transition[data-transition="scale"].fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-transition[data-transition="bounce"] {
+  transition:
+    opacity var(--duration-normal, 200ms) var(--ease-default, ease),
+    transform var(--duration-slow, 300ms) var(--ease-bounce, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    filter var(--duration-normal, 200ms) var(--ease-default, ease);
+}
+.page-transition[data-transition="bounce"].fade-out {
+  opacity: 0;
+  transform: scale(0.92);
+}
+.page-transition[data-transition="bounce"].fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-transition[data-transition="none"] {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   PATA PACHA — Cute Dopamine Custom Styles
+   ============================================ */
+
+/* Hero gradient: pink → purple → sky */
+.hero-overlay {
+  background: linear-gradient(135deg, oklch(0.65 0.20 330 / 0.88), oklch(0.55 0.22 300 / 0.70), oklch(0.60 0.18 240 / 0.60));
+}
+
+/* Cute card hover with bouncy shadow */
+.card-hover-lift {
+  transition: transform var(--duration-normal) var(--ease-bounce), box-shadow var(--duration-normal) var(--ease-default);
+}
+.card-hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ds-shadow-lg);
+}
+
+/* Carousel dots — cute pill shape */
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(0.99 0.005 350 / 0.5);
+  transition: all var(--duration-normal) var(--ease-bounce);
+}
+.carousel-dot.active {
+  background: oklch(0.82 0.18 90);
+  width: 28px;
+  border-radius: 10px;
+}
+
+/* Rainbow accent underline */
+.rainbow-underline {
+  background: linear-gradient(90deg, oklch(0.75 0.18 350), oklch(0.62 0.22 300), oklch(0.65 0.18 240), oklch(0.68 0.16 155), oklch(0.82 0.18 90));
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Category card cute gradient backgrounds */
+.cat-gradient-toys { background: linear-gradient(135deg, oklch(0.95 0.06 90), oklch(0.92 0.08 60)); }
+.cat-gradient-beds { background: linear-gradient(135deg, oklch(0.95 0.05 300), oklch(0.92 0.07 330)); }
+.cat-gradient-carriers { background: linear-gradient(135deg, oklch(0.95 0.05 240), oklch(0.92 0.07 220)); }
+.cat-gradient-grooming { background: linear-gradient(135deg, oklch(0.95 0.05 155), oklch(0.92 0.07 165)); }
+.cat-gradient-collars { background: linear-gradient(135deg, oklch(0.95 0.06 350), oklch(0.92 0.08 10)); }
+.cat-gradient-clothing { background: linear-gradient(135deg, oklch(0.95 0.05 50), oklch(0.92 0.07 30)); }
+
+/* Playful blob shape for hero decorations */
+.blob-decoration {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: blob-morph 8s ease-in-out infinite;
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+  50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+  75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+}
+
+/* Cute tag badge */
+.cute-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Bounce animation for interactive elements */
+@keyframes cute-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
