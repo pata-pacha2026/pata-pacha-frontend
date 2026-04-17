@@ -2,11 +2,12 @@ import axios, { AxiosError } from 'axios';
 
 /**
  * Axios instance configured for API requests
- * Uses Vite proxy to forward /api requests to http://localhost:3000
- * No need for VITE_API_BASE_URL environment variable
+ * Uses VITE_API_BASE_URL env var in production, falls back to /api for dev proxy
  */
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+
 export const apiClient = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
